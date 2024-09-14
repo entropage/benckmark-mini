@@ -17,13 +17,6 @@ public class ognlController {
         return "success";
     }
 
-    @RequestMapping(value = "/ognlGetValue2")
-    public String ognlGetValue2(@RequestParam String value) throws OgnlException, IOException {
-        OgnlContext context = new OgnlContext();
-        Ognl.getValue(value,context,context.getRoot());
-        return "success";
-    }
-
     @RequestMapping(value = "/ognlSetValue")
     public String ognlSetValue(@RequestParam String value) throws OgnlException {
         OgnlContext context = new OgnlContext();

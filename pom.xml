@@ -361,35 +361,6 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-<!--  Uncommenting the following <excluedes> will disable all XSS testcases 
-      numbered 200 and higher to save CodeQL analysis                    
-                    <excludes>
-                        <exclude>*/xss/*/BenchmarkTest01*.java</exclude>
-                        <exclude>*/xss/*/BenchmarkTest02*.java</exclude>
-                        <exclude>*/xss/*/BenchmarkTest002*.java</exclude>
-                        <exclude>*/xss/*/BenchmarkTest003*.java</exclude>
-                        <exclude>*/xss/*/BenchmarkTest004*.java</exclude>
-                        <exclude>*/xss/*/BenchmarkTest005*.java</exclude>
-                        <exclude>*/xss/*/BenchmarkTest006*.java</exclude>
-                        <exclude>*/xss/*/BenchmarkTest007*.java</exclude>
-                        <exclude>*/xss/*/BenchmarkTest008*.java</exclude>
-                        <exclude>*/xss/*/BenchmarkTest009*.java</exclude>
-                    </excludes>
- -->
-                    <includes>
-                        <!-- <include>**/ELInject/controller/AviatorController.java</include>
-                        <include>**/ELInject/controller/AviatorShowController.java</include>
-                        <include>**/ELInject/controller/JxPathController.java</include>
-                        <include>**/ELInject/dto/**</include>
-                        <include>**/ELInject/service/**</include> -->
-                        <include>**/Deserialize/controller/FastjsonToXmlController.java</include>
-                        <include>**/Deserialize/dto/**</include>
-                        <include>**/Deserialize/service/**</include>
-                        <include>**/upload/controller/**</include>
-                        <include>**/BenchmarkApplication.java</include>
-                        <include>**/commons/**</include>
-                        <include>**/config/**</include>
-                    </includes>
                 </configuration>
             </plugin>
             <plugin>
