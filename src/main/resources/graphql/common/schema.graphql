@@ -1,0 +1,65 @@
+scalar Long
+scalar JSON
+scalar Object
+#type User @key(fields: "id,username,employee_id") @extends {
+#    id: Int @external
+#    username: String @external
+#    employee_id: String @external
+#}
+type CmpUser  {
+    id: Long
+    username: String
+    employee_id: String
+}
+type Query{
+    cmpTempTestQuery: Boolean
+}
+type Mutation {
+
+}
+
+enum CmpDateRangeEnum {
+    "近一年"
+    NEARLY_YEAR,
+    "近半年"
+    NEARLY_HALF_YEAR,
+    "近一月"
+    NEARLY_MONTH,
+    "近一周"
+    NEARLY_WEEK,
+
+}
+
+"通用折线图图数据集"
+type CommonLineChart {
+    dimension: String
+    source: [CommonQueryResult]
+}
+
+type CommonQueryResult {
+    desc: String
+    value: String
+}
+
+"通用字符串map，值为字符串列表"
+type CommonStringMapTuple {
+    key: String
+    value: [String]
+}
+
+"环比对象"
+type Amount {
+    "汇总值"
+    value: Float
+    "环比字符串(月环比或周环比, 用于前端展示)"
+    growth_ratio_view: String
+    "环比值"
+    growth_ratio_value: Float
+    "环比值是否上升"
+    is_up: Boolean
+    "是否相等"
+    equals: Boolean
+
+
+
+}

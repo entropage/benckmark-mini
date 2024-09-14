@@ -1,0 +1,224 @@
+extend type Query {
+    getKongPluginByServiceId(api_url: String!, ns_env: String!, service_id: String!): Boolean
+}
+
+extend type Mutation {
+    editKongRoute(api_url: String!, ns_env: String!, route: KongUpstreamTargetInput): Boolean
+    createKongUpstreamTarget(api_url: String!, ns_env: String!, upstream_id: String!, target: KongUpstreamTargetInput): Boolean
+    deleteKongUpstream(api_url: String!, ns_env: String!, upstream_id: String!): Boolean
+}
+
+input KongServiceInput {
+    id: String
+    "Name"
+    name: String
+    "Host"
+    host: String
+    "Port"
+    port: Int
+    "Path"
+    path: String
+    "Description"
+    destinations: String
+    "Tags"
+    tags: [String]
+    "Protocol"
+    protocol: String
+    "Retries"
+    retries: Int
+    "Connect timeout"
+    connect_timeout: Long
+    "Write timeout"
+    write_timeout: Long
+    "Read timeout"
+    read_timeout: Long
+}
+
+input KongRouteInput {
+    id: String
+    "Name"
+    name: String
+    "Headers"
+    headers: JSON
+    "Protocols"
+    protocols: [String]
+    "Methods"
+    methods: [String]
+    "Paths"
+    paths: [String]
+    "Strip Path"
+    strip_path: Boolean
+    "Preserve Host"
+    preserve_host: Boolean
+    "Regex priority"
+    regex_priority: Int
+    "Hosts"
+    hosts: [String]
+    "Tags"
+    tags: [String]
+    "Https redirect status code"
+    https_redirect_status_code: Int
+    "Path handling"
+    path_handling: String
+    "SNIs"
+    snis: [String]
+    "Sources"
+    sources: [String]
+}
+
+input KongUpstreamTargetInput {
+    target: String
+    weight: Int
+    tags: [String]
+}
+
+input KongPluginInput {
+    id: String
+    name: String
+    route: JSON
+    service: JSON
+    consumer: JSON
+    config: JSON
+    run_on: String
+    protocols: [String]
+    enabled: Boolean
+    tags: [String]
+}
+
+input KongUpstreamInput {
+    id: String
+    name: String
+    created_at: Long
+    slots: Int
+    algorithm: String
+    hash_on: String
+    hash_fallback: String
+    hash_on_cookie_path: String
+    hash_on_header: String
+    hash_fallback_header: String
+    hash_on_cookie: String
+    healthchecks: JSON
+    tags: [String]
+    host_header: String
+}
+
+type CmpKongService {
+    id: String
+    host: String
+    created_at: Long
+    connect_timeout: Int
+    protocol: String
+    name: String
+    read_timeout: Int
+    port: Int
+    path: String
+    updated_at: Long
+    retries: Int
+    write_timeout: Int
+    tags: [String]
+    client_certificate: JSON
+}
+
+type CmpKongRoute {
+    id: String
+    name: String
+    service: JSON
+    headers: JSON
+    protocols: [String]
+    methods: [String]
+    paths: [String]
+    strip_path: Boolean
+    preserve_host: Boolean
+    regex_priority: Int
+    hosts: [String]
+    tags: [String]
+    created_at: Long
+    updated_at: Long
+    https_redirect_status_code: Int
+    path_handling: String
+    service_name: String
+}
+
+type CmpKongUpstream {
+    id: String
+    name: String
+    created_at: Long
+    slots: Int
+    algorithm: String
+    hash_on: String
+    hash_fallback: String
+    hash_on_cookie_path: String
+    hash_on_header: String
+    hash_fallback_header: String
+    hash_on_cookie: String
+    healthchecks: JSON
+    tags: [String]
+    host_header: String
+    active_health_check: String
+    passive_health_check: String
+}
+
+type CmpKongPlugin {
+    id: String
+    name: String
+    created_at: Long
+    route: JSON
+    service: JSON
+    consumer: JSON
+    config: JSON
+    run_on: String
+    protocols: [String]
+    enabled: Boolean
+    tags: [String]
+    service_name: String
+    route_name: String
+    scope: String
+}
+
+type CmpKongUpstreamTarget {
+    id: String
+    created_at: Long
+    upstream: JSON
+    target: String
+    weight: Int
+    tags: [String]
+}
+
+input CmpKongCertificatesInput {
+    "ID"
+    id: String
+    "TAGS"
+    tags: [String]
+    "SNIS"
+    snis: [String]
+    "Certificate"
+    cert: String
+    "Key"
+    key: String
+}
+
+type CmpKongCertificates {
+    "ID"
+    id: String
+    "TAGS"
+    tags: [String]
+    "SNIS"
+    snis: [String]
+    "CREATED"
+    created_at: Long
+    "Certificate"
+    cert: String
+    "Key"
+    key: String
+    "证书到期时间"
+    certificate_expiration_time: Long
+}
+
+type CmpKongUpstreamsHealth {
+    id: String
+    upstream: JSON
+    created_at: Float
+    target: String
+    health: String
+    weight: Int
+}
